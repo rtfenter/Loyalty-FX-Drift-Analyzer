@@ -41,7 +41,9 @@ The focus is on visualizing relative movement, not precision pricing.
 
 ## Demo Screenshot
 
-> (Screenshot to be added after MVP implementation.)
+<img width="2804" height="1618" alt="Screenshot 2025-11-25 at 09-57-37 Loyalty FX Drift Analyzer" src="https://github.com/user-attachments/assets/8e320b28-cad2-452a-a84c-2d8202936153" />
+
+
 
 ---
 
@@ -129,7 +131,7 @@ https://github.com/rtfenter/loyalty-series
 
 ## Status  
 
-MVP design defined.  
+MVP is active and implemented.  
 Frontend implementation in progress — this prototype will stay intentionally lightweight and visual, focusing on the relative drift and fairness story rather than full financial modeling.
 
 ---
