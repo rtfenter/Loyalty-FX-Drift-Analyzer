@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Loyalty FX Drift Analyzer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="page-header">
+    <div class="page-header-inner">
+      <h1>Loyalty FX Drift Analyzer</h1>
+      <p class="tagline">
+        Visualize how FX shifts change loyalty value and partner fairness across regions.
+      </p>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- LEFT: INPUT PANEL -->
+    <section class="panel panel-input">
+      <div class="panel-header">
+        <h2>Scenario</h2>
+        <div class="panel-actions">
+          <button id="resetBtn" class="btn btn-secondary">Reset to Baseline</button>
+        </div>
+      </div>
+
+      <p class="help-text">
+        Define a simple reward and base point economics, then drag the FX drift slider to see how
+        value moves across partners and regions.
+      </p>
+
+      <div class="field">
+        <label for="base-point-value">Base Point Value (per point, base currency)</label>
+        <input
+          id="base-point-value"
+          type="number"
+          min="0"
+          step="0.0001"
+          value="0.01"
+        />
+        <p class="help-text">
+          Example: 0.01 = 1 cent per point in the program's base currency (e.g., USD).
+        </p>
+      </div>
+
+      <div class="field">
+        <label for="points-cost">Sample Reward Price (points)</label>
+        <input
+          id="points-cost"
+          type="number"
+          min="0"
+          step="100"
+          value="10000"
+        />
+        <p class="help-text">
+          The same points price is assumed across all regions and partners.
+        </p>
+      </div>
+
+      <hr class="divider" />
+
+      <div class="field">
+        <label>Baseline FX Table (1 local = X base currency)</label>
+        <div class="fx-grid">
+          <div class="fx-item">
+            <span class="fx-label">US (USD)</span>
+            <input
+              id="fx-us"
+              type="number"
+              min="0"
+              step="0.0001"
+              value="1.00"
+            />
+          </div>
+          <div class="fx-item">
+            <span class="fx-label">EU (EUR)</span>
+            <input
+              id="fx-eu"
+              type="number"
+              min="0"
+              step="0.0001"
+              value="1.10"
+            />
+          </div>
+          <div class="fx-item">
+            <span class="fx-label">UK (GBP)</span>
+            <input
+              id="fx-uk"
+              type="number"
+              min="0"
+              step="0.0001"
+              value="1.27"
+            />
+          </div>
+          <div class="fx-item">
+            <span class="fx-label">JP (JPY)</span>
+            <input
+              id="fx-jp"
+              type="number"
+              min="0"
+              step="0.0001"
+              value="0.0070"
+            />
+          </div>
+        </div>
+        <p class="help-text">
+          These represent the current FX view used for liability modeling.
+        </p>
+      </div>
+
+      <hr class="divider" />
+
+      <div class="field">
+        <label for="drift-slider">FX Drift for Non-USD Currencies</label>
+        <input
+          id="drift-slider"
+          type="range"
+          min="-20"
+          max="20"
+          step="1"
+          value="0"
+        />
+        <div class="drift-label-row">
+          <span class="drift-label">Stronger local currency</span>
+          <span id="drift-value" class="drift-value">0%</span>
+          <span class="drift-label">Weaker local currency</span>
+        </div>
+        <p class="help-text">
+          Applies a +/- percentage shift to EU, UK, and JP FX values relative to USD.
+        </p>
+      </div>
+    </section>
+
+    <!-- RIGHT: FX DRIFT VIEW -->
+    <section class="panel panel-results">
+      <div class="panel-header">
+        <h2>Partner Value Drift</h2>
+      </div>
+
+      <div id="summary" class="summary">
+        <div id="summary-badge" class="summary-badge summary-badge-idle">
+          No drift applied.
+        </div>
+        <p id="summary-text" class="summary-text">
+          Set baseline economics and move the FX drift slider to see which partners become richer,
+          poorer, or stay stable.
+        </p>
+      </div>
+
+      <div class="drift-legend">
+        <span class="legend-item legend-positive">Partner richer vs baseline</span>
+        <span class="legend-item legend-neutral">Near baseline</span>
+        <span class="legend-item legend-negative">Partner poorer vs baseline</span>
+      </div>
+
+      <div id="bars-container" class="bars-container">
+        <!-- Bars injected by JS -->
+      </div>
+
+      <div class="raw-output">
+        <h3>Drift Details</h3>
+        <pre id="raw-output">No analysis yet.</pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <p>
+      Part of the
+      <a href="https://github.com/rtfenter/loyalty-series" target="_blank" rel="noreferrer">
+        Loyalty Systems Series
+      </a>.
+    </p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
