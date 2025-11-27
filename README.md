@@ -43,12 +43,11 @@ The focus is on visualizing relative movement, not precision pricing.
 
 <img width="2804" height="1618" alt="Screenshot 2025-11-25 at 09-57-37 Loyalty FX Drift Analyzer" src="https://github.com/user-attachments/assets/8e320b28-cad2-452a-a84c-2d8202936153" />
 
-
-
 ---
 
-## FX Drift Analysis Flow
+## FX Drift Flow Diagram
 
+~~~
     [Base Point Value + FX Table + Sample Reward]
                           |
                           v
@@ -71,6 +70,7 @@ The focus is on visualizing relative movement, not precision pricing.
              Visual Drift Map & Explanation
       ("Hotels in EU are now 18% richer than US",
        "Retail JP rewards are heavily diluted")
+~~~
 
 ---
 
@@ -125,7 +125,7 @@ This tool is a legible micro-version of how FX drift interacts with loyalty valu
 ## Part of the Loyalty Systems Series
 
 Main repo:  
-https://github.com/rtfenter/loyalty-series
+https://github.com/rtfenter/Loyalty-Systems-Series
 
 ---
 
